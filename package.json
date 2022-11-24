@@ -1,0 +1,154 @@
+{
+	"name": "cron-tasks",
+	"displayName": "Cron Tasks",
+	"description": "Easily schedule your tasks",
+	"version": "0.0.0",
+	"author": {
+		"name": "Baptiste Augrain",
+		"email": "daiyam@zokugun.org"
+	},
+	"publisher": "zokugun",
+	"license": "MIT",
+	"homepage": "https://github.com/zokugun/vscode-cron",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/zokugun/vscode-cron.git"
+	},
+	"bugs": {
+		"url": "https://github.com/zokugun/vscode-cron/issues"
+	},
+	"engines": {
+		"vscode": "^1.23.0"
+	},
+	"main": "./lib/index.js",
+	"browser": "./lib/index.js",
+	"scripts": {
+		"bundle": "ncc build out/extension --out lib",
+		"commit": "cz",
+		"compile": "tsc -p src",
+		"lint": "xo",
+		"package": "rm -f *.vsix && vsce package",
+		"prepare": "husky install; fixpack || true",
+		"release": "release-it",
+		"vscode:prepublish": "npm run compile && npm run bundle",
+		"watch": "tsc-watch -p src --onSuccess 'npm run bundle'"
+	},
+	"dependencies": {
+		"croner": "^5.3.4",
+		"fs-extra": "^10.0.1",
+		"uuid-random": "^1.3.2"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^17.0.3",
+		"@commitlint/config-conventional": "^17.0.3",
+		"@types/fs-extra": "^9.0.13",
+		"@types/node": "^16.11.45",
+		"@types/vscode": "^1.23.0",
+		"@vercel/ncc": "^0.34.0",
+		"commitizen": "^4.2.5",
+		"fixpack": "^4.0.0",
+		"husky": "^8.0.1",
+		"lint-staged": "^13.0.3",
+		"release-it": "^15.3.0",
+		"tsc-watch": "^5.0.3",
+		"typescript": "^4.2.4",
+		"xo": "^0.48.0"
+	},
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"capabilities": {
+		"virtualWorkspaces": true,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"contributes": {
+		"commands": [],
+		"configuration": {
+			"title": "Cron Tasks",
+			"properties": {
+				"cronTasks.debug": {
+					"description": "Output debug logs",
+					"default": false,
+					"oneOf": [
+						{
+							"type": "boolean",
+							"default": false
+						},
+						{
+							"type": "string",
+							"default": "useBlank",
+							"enum": [
+								"off",
+								"on",
+								"useBlank"
+							],
+							"enumDescriptions": [
+								"The logs are still print out",
+								"Focus on the channel",
+								"The commands won't be called"
+							]
+						}
+					],
+					"scope": "application"
+				},
+				"cronTasks.notification": {
+					"type": "string",
+					"description": "Display notification when a new version is installed",
+					"default": "minor",
+					"enum": [
+						"none",
+						"major",
+						"minor",
+						"patch"
+					],
+					"enumDescriptions": [
+						"The new version notification won't be shown anymore",
+						"The new version notification will be shown only with a new major version",
+						"The new version notification will be shown only with a new minor version",
+						"The new version notification will always be shown"
+					],
+					"scope": "application"
+				},
+				"cronTasks.tasks": {
+					"type": "array",
+					"description": "List of tasks to schedule",
+					"items": {
+						"type": "object",
+						"description": "A task",
+						"properties": {
+							"at": {
+								"type": "string",
+								"description": "The date/time of the cron"
+							},
+							"run": {
+								"type": "string",
+								"description": "The command to execute"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"icon": "icon.png",
+	"galleryBanner": {
+		"color": "#ffffff",
+		"theme": "light"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"cron",
+		"crontab",
+		"job",
+		"schedule",
+		"task"
+	],
+	"extensionKind": [
+		"ui",
+		"workspace"
+	]
+}
