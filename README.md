@@ -8,7 +8,7 @@ Cron Tasks
 [![Donation](https://img.shields.io/badge/donate-liberapay-green)](https://liberapay.com/daiyam/donate)
 [![Donation](https://img.shields.io/badge/donate-paypal-green)](https://paypal.me/daiyam99)
 
-With [Cron Tasks](https://github.com/zokugun/vscode-cron), you can schdule tasks/jobs to run periodically at fixed times, dates, or intervals.
+With [Cron Tasks](https://github.com/zokugun/vscode-cron), you can schedule tasks/jobs to run periodically at fixed times, dates, or intervals.
 
 HowTo
 -----

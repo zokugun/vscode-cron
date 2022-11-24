@@ -55,6 +55,8 @@ export class Scheduler {
 		if(this._tasks[uuid]) {
 			this._channel.appendLine(`[del-task](${uuid})`);
 
+			this._tasks[uuid].cron.stop();
+
 			delete this._tasks[uuid];
 
 			return true;
