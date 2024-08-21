@@ -118,6 +118,7 @@ export class Scheduler {
 
 				try {
 					if(task.args) {
+						this._channel.append(` args: ${task.args.join(', ')}`);
 						await vscode.commands.executeCommand(
 							task.command,
 							...task.args
