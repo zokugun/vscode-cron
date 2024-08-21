@@ -125,6 +125,13 @@
 							"run": {
 								"type": "string",
 								"description": "The command to execute"
+							},
+							"args": {
+								"type": "array",
+								"description": "The arguments to pass to the command - optional",
+								"items": {
+									"type": "string"
+								}
 							}
 						}
 					}

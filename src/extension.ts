@@ -12,6 +12,7 @@ const VERSION_KEY = 'version';
 type Task = {
 	at: string;
 	run: string;
+	args?: string[];
 };
 
 function setup(): void { // {{{
@@ -20,11 +21,12 @@ function setup(): void { // {{{
 
 	scheduler.removeTasks(TaskKind.Config);
 
-	for(const { at, run } of config.get<Task[]>('tasks') ?? []) {
+	for(const { at, run, args } of config.get<Task[]>('tasks') ?? []) {
 		scheduler.addTask({
 			kind: TaskKind.Config,
 			pattern: at,
 			command: run,
+			args,
 		});
 	}
 } // }}}
