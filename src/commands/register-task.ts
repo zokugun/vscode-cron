@@ -1,11 +1,11 @@
 import { Scheduler, TaskKind } from '../scheduler';
 
-export async function registerTask(at: string, run: string): Promise<string> {
+export async function registerTask(
+	at: string,
+	run: string,
+	args?: string[],
+): Promise<string> {
 	const scheduler = Scheduler.get();
 
-	return scheduler.addTask({
-		kind: TaskKind.Config,
-		pattern: at,
-		command: run,
-	});
+	return scheduler.addTask(TaskKind.Config, at, run, args);
 }
