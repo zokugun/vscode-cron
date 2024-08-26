@@ -27,18 +27,7 @@ export class Scheduler {
 		return $instance;
 	} // }}}
 
-	public addTask({
-		kind,
-		pattern,
-		command,
-		args,
-	}: {
-		kind: TaskKind;
-		pattern: string;
-		command: string;
-		args?: string[];
-	}): string {
-		// {{{
+	public addTask(kind: TaskKind, pattern: string, command: string, args?: string[]): string { // {{{
 		const uuid = uuidv4();
 		const cron = new Cron(pattern);
 		const task: Task = {
@@ -119,9 +108,10 @@ export class Scheduler {
 				try {
 					if(task.args) {
 						this._channel.append(` args: ${task.args.join(', ')}`);
+
 						await vscode.commands.executeCommand(
 							task.command,
-							...task.args
+							...task.args,
 						);
 					}
 					else {

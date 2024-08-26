@@ -22,12 +22,7 @@ function setup(): void { // {{{
 	scheduler.removeTasks(TaskKind.Config);
 
 	for(const { at, run, args } of config.get<Task[]>('tasks') ?? []) {
-		scheduler.addTask({
-			kind: TaskKind.Config,
-			pattern: at,
-			command: run,
-			args,
-		});
+		scheduler.addTask(TaskKind.Config, at, run, args);
 	}
 } // }}}
 
