@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.2.1 | 2025-04-24
+- update dependencies
+
 ## v0.2.0 | 2024-08-26
 - pass arguments, thanks to **@Freaxys**
 
