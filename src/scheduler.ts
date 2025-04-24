@@ -1,7 +1,7 @@
 import { Cron } from 'croner';
 import uuidv4 from 'uuid-random';
 import vscode from 'vscode';
-import * as window from './window';
+import * as window from './window.js';
 
 export type Task = {
 	command: string;
@@ -47,7 +47,7 @@ export class Scheduler {
 			this._channel.show(true);
 		}
 
-		const next = cron.next();
+		const next = cron.nextRun();
 		this._channel.appendLine(`[new-task](${task.uuid}) pattern: ${pattern}, command: ${command}, next: ${next ? next.toISOString() : '-no-'}`);
 
 		return uuid;
@@ -94,7 +94,7 @@ export class Scheduler {
 			this._channel.show(true);
 		}
 
-		const next = task.cron.next();
+		const next = task.cron.nextRun();
 
 		if(await window.isMain()) {
 			this._channel.appendLine(`[run-task](${task.uuid}) main: true, next: ${next ? next.toISOString() : '-no-'}`);
@@ -129,9 +129,7 @@ export class Scheduler {
 	} // }}}
 
 	public setup(config: vscode.WorkspaceConfiguration): this { // {{{
-		if(!this._channel) {
-			this._channel = vscode.window.createOutputChannel('Cron Tasks');
-		}
+		this._channel ||= vscode.window.createOutputChannel('Cron Tasks');
 
 		const debug = config.get<boolean | string>('debug');
 

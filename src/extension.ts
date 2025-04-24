@@ -1,10 +1,10 @@
 import vscode from 'vscode';
 import pkg from '../package.json';
-import { registerTask } from './commands/register-task';
-import { showTestMessage } from './commands/show-test-message';
-import { unregisterTask } from './commands/unregister-task';
-import { Scheduler, TaskKind } from './scheduler';
-import * as window from './window';
+import { registerTask } from './commands/register-task.js';
+import { showTestMessage } from './commands/show-test-message.js';
+import { unregisterTask } from './commands/unregister-task.js';
+import { Scheduler, TaskKind } from './scheduler.js';
+import * as window from './window.js';
 
 const CONFIG_KEY = 'cronTasks';
 const VERSION_KEY = 'version';

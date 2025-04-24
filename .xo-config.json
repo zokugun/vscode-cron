@@ -123,6 +123,17 @@
 		"unicorn/prefer-module": "off",
 		"unicorn/prefer-node-protocol": "off",
 		"unicorn/prefer-switch": "off",
-		"unicorn/prefer-ternary": "off"
+		"unicorn/prefer-ternary": "off",
+		"unicorn/prevent-abbreviations": [
+			"error",
+			{
+				"replacements": {
+					"args": false,
+					"err": false,
+					"func": false,
+					"pkg": false
+				}
+			}
+		]
 	}
 }

@@ -1,4 +1,4 @@
-import { Scheduler, TaskKind } from '../scheduler';
+import { Scheduler, TaskKind } from '../scheduler.js';
 
 export async function registerTask(
 	at: string,
