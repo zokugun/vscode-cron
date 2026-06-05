@@ -1,6 +1,7 @@
 {
 	"ignores": [
-		"*.config.js"
+		"*.config.js",
+		"*.config.ts"
 	],
 	"rules": {
 		"@typescript-eslint/ban-types": "off",
@@ -54,23 +55,48 @@
 				"format": [
 					"camelCase",
 					"UPPER_CASE"
-				]
+				],
+				"filter": {
+					"regex": "^(__filename|__dirname)$",
+					"match": false
+				}
 			},
 			{
 				"selector": "variable",
 				"format": [
 					"camelCase"
-				]
+				],
+				"filter": {
+					"regex": "^(__filename|__dirname)$",
+					"match": false
+				}
 			}
 		],
 		"@typescript-eslint/no-confusing-void-expression": "off",
 		"@typescript-eslint/no-dynamic-delete": "off",
+		"@typescript-eslint/no-empty-function": [
+			"error",
+			{
+				"allow": [
+					"arrowFunctions"
+				]
+			}
+		],
 		"@typescript-eslint/no-inferrable-types": "off",
 		"@typescript-eslint/no-namespace": "off",
 		"@typescript-eslint/object-curly-spacing": [
 			"error",
 			"always"
 		],
+		"@typescript-eslint/parameter-properties": "off",
+		"@typescript-eslint/prefer-nullish-coalescing": [
+			"error",
+			{
+				"ignoreConditionalTests": true
+			}
+		],
+		"@typescript-eslint/prefer-promise-reject-errors": "off",
+		"@typescript-eslint/return-await": "off",
 		"arrow-parens": [
 			"error",
 			"always"
@@ -112,12 +138,15 @@
 		"no-else-return": "off",
 		"no-lonely-if": "off",
 		"no-negated-condition": "off",
+		"object-curly-newline": "off",
+		"object-shorthand": "off",
 		"one-var": [
 			"error",
 			"never"
 		],
 		"unicorn/empty-brace-spaces": "off",
 		"unicorn/no-array-callback-reference": "off",
+		"unicorn/no-length-as-slice-end": "off",
 		"unicorn/no-object-as-default-parameter": "off",
 		"unicorn/prefer-json-parse-buffer": "off",
 		"unicorn/prefer-module": "off",
@@ -128,10 +157,19 @@
 			"error",
 			{
 				"replacements": {
+					"arg": false,
 					"args": false,
+					"dir": false,
 					"err": false,
+					"fn": false,
 					"func": false,
-					"pkg": false
+					"i": false,
+					"j": false,
+					"mod": false,
+					"num": false,
+					"pkg": false,
+					"str": false,
+					"temp": false
 				}
 			}
 		]
