@@ -55,7 +55,7 @@
 		"@types/fs-extra": "9.0.13",
 		"@types/node": "20.19.43",
 		"@types/vscode": "1.56.0",
-		"@vercel/ncc": "0.38.4",
+		"@vercel/ncc": "0.44.0",
 		"@vscode/vsce": "3.9.2",
 		"fixpack": "4.0.0",
 		"husky": "9.1.7",
@@ -74,6 +74,10 @@
 		"release-it": {
 			"undici": "7.28.0"
 		}
+	},
+	"allowScripts": {
+		"@vscode/vsce-sign": true,
+		"keytar": true
 	},
 	"activationEvents": [
 		"onStartupFinished"
