@@ -18,7 +18,7 @@
 		"url": "https://github.com/zokugun/vscode-cron/issues"
 	},
 	"engines": {
-		"vscode": "^1.23.0"
+		"vscode": "^1.56.0"
 	},
 	"main": "./lib/index.js",
 	"browser": "./lib/index.js",
@@ -177,7 +177,6 @@
 		"task"
 	],
 	"extensionKind": [
-		"ui",
 		"workspace"
 	]
 }
